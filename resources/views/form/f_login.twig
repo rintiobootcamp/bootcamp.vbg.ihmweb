@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>VBG - OUT 1.0</title>
+
+    <meta name="description" content="Plateforme de lutte contre les Violences Basées sur le Genre (VBG)">
+    <meta name="author" content="Equipe Jaune bootcamp">
+    <meta name="robots" content="noindex, nofollow">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+
+    <!-- Icons -->
+    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+    <link rel="shortcut icon" href="{{base_url()}}/favicon.ico">
+    <link rel="apple-touch-icon" href="{{base_url()}}/resources/assets/img/icon57.png" sizes="57x57">
+    <link rel="apple-touch-icon" href="{{base_url()}}/resources/assets/img/icon72.png" sizes="72x72">
+    <link rel="apple-touch-icon" href="{{base_url()}}/resources/assets/img/icon76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="{{base_url()}}/resources/assets/img/icon114.png" sizes="114x114">
+    <link rel="apple-touch-icon" href="{{base_url()}}/resources/assets/img/icon120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="{{base_url()}}/resources/assets/img/icon144.png" sizes="144x144">
+    <link rel="apple-touch-icon" href="{{base_url()}}/resources/assets/img/icon152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="{{base_url()}}/resources/assets/img/icon180.png" sizes="180x180">
+    <!-- END Icons -->
+
+    <!-- Stylesheets -->
+    <!-- Bootstrap is included in its original form, unaltered -->
+    <link rel="stylesheet" href="{{base_url()}}/resources/assets/css/bootstrap.min.css">
+
+    <!-- Related styles of various icon packs and plugins -->
+    <link rel="stylesheet" href="{{base_url()}}/resources/assets/css/plugins.css">
+
+    <!-- The main stylesheet of this template. All Bootstrap overwrites are defined in here -->
+    <link rel="stylesheet" href="{{base_url()}}/resources/assets/css/main.css">
+
+    <!-- Include a specific file here from css/themes/ folder to alter the default theme of the template -->
+
+    <!-- The themes stylesheet of this template (for using specific theme color in individual elements - must included last) -->
+    <link rel="stylesheet" href="{{base_url()}}/resources/assets/css/themes.css">
+    <!-- END Stylesheets -->
+</head>
+<body>
+    <!-- Full Background -->
+        <!-- For best results use an image with a resolution of 1280x1280 pixels (prefer a blurred image for smaller file size) 
+        <img src="{{base_url()}}/resources/assets/img/placeholders/layout/login.jpg" alt="Full Background" class="full-bg animation-pulseSlow">
+        END Full Background -->
+
+        <!-- Login Container -->
+        <div id="login-container">
+            <!-- Login Header -->
+            <h1 class="h2 text-light text-center push-top-bottom animation-pullDown">
+                <i class="fa fa-connectdevelop text-light-op"></i><strong>VBG - OUT</strong>
+            </h1>
+            <!-- END Login Header -->
+
+            <!-- Login Block -->
+            <div class="block animation-fadeInQuick">
+                <!-- Login Title -->
+                <div class="block-title">
+                    <h3>Connexion</h3>
+                </div>
+                <!-- END Login Title -->
+
+                <!-- Login Form -->
+                <form id="form-login" method="post" action="{{ path_for('auth') }}" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="login" class="col-xs-12">Nom d'utilisateur</label>
+                        <div class="col-xs-12">
+                            <input type="text" id="login" name="login" class="form-control" placeholder="Votre nom d'utilisateur...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-xs-12">Mot de passe</label>
+                        <div class="col-xs-12">
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Votre mot de passe...">
+                        </div>
+                    </div>
+                    <div class="form-group form-actions">
+                        <div class="col-xs-12 text-right">
+                            <button type="submit" class="btn btn-effect-ripple btn-sm btn-success col-md-12">Connexion</button>
+                        </div>
+                    </div>
+                    {{ csrf.field | raw }} 
+                </form>
+                <!-- END Login Form -->
+
+                <!-- Social Login -->
+                <hr>
+            </div>
+            <!-- END Login Block -->
+
+        </div>
+        <!-- END Login Container -->
+
+        <!-- Include Jquery library from Google's CDN but if something goes wrong get Jquery from local file -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script>!window.jQuery && document.write(decodeURI('%3Cscript src="{{base_url()}}/resources/assets/js/vendor/jquery-2.1.3.min.js"%3E%3C/script%3E'));</script>
+
+        <!-- Bootstrap.js, Jquery plugins and Custom JS code -->
+        <script src="{{base_url()}}/resources/assets/js/vendor/bootstrap.min.js"></script>
+        <script src="{{base_url()}}/resources/assets/js/plugins.js"></script>
+        <script src="{{base_url()}}/resources/assets/js/app.js"></script>
+        
+        <script src="{{base_url()}}/resources/assets/js/pages/formsComponents.js"></script>
+        <script>$(function(){ FormsComponents.init(); });</script>
+        {% block javascript %} {% endblock %}
+    </body>
+    </html>

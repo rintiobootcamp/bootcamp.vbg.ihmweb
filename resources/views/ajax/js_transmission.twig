@@ -1,0 +1,56 @@
+<script type="text/javascript">
+    var idtransmission = -1;
+
+    function clicker (id){
+        idtransmission = id;
+        console.log(idtransmission);
+    }
+
+    function accuser() {
+        $.ajax({
+                url: '{{ base_url() }}/transmission/accuser',
+                data: 'idtransmission='+idtransmission,
+                success: function()
+                {
+                    console.log("Bon");
+                    $('#chek_'+idtransmission).attr("disabled", true);
+                },
+                error: function()
+                {
+                    console.log("Erreur");
+                }
+            });
+    }
+
+    function sendForm() {
+        var id = $('#profil_id').val();
+        var contenu = $('#contenu').val();
+        console.log("send form");
+        console.log(id);
+        console.log(contenu);
+
+        if (contenu==""){
+            console.log("contenu vide");
+        }
+        else{
+            $.ajax({
+                url: '{{ base_url() }}/commentaire/create',
+                data: 'idProbleme='+id+'&contenu='+contenu,
+                success: function() 
+                {
+                    $('#contenu').val("");
+                    for (var i=0; i<1000; i++){
+                    }
+
+                    affiche(id);
+                },
+                error: function()
+                {
+                    console.log("Erreur");
+                }
+            });
+        }
+    }
+</script>
+
+

@@ -1,0 +1,13 @@
+{# empty Twig template #}
+
+<script type="text/javascript">
+    // Toast Notification
+    $(window).load(function() {
+        {#var flashMessage = {{ flash.getMessage('success') | raw }};#}
+        setTimeout(function() {
+            Materialize.toast('<span>Enregistrement effectué avec succès.</span>', 4000, 'green');
+        }, 1500);
+       
+    });
+</script>
+   

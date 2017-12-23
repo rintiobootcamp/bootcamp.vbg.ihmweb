@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>VBG - OUT</title>
+
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Plateforme de lutte contre les Violences Basées sur le Genre (VBG)">
+    <meta name="author" content="Equipe Jaune bootcamp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="{{base_url()}}/resources/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{base_url()}}/resources/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{base_url()}}/resources/assets/css/animate.css">
+    <link rel="stylesheet" href="{{base_url()}}/resources/assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="{{base_url()}}/resources/assets/css/owl.theme.css">
+    <link rel="stylesheet" href="{{base_url()}}/resources/assets/css/style.css">
+
+
+    <!-- scripts -->
+    <script type="text/javascript" src="{{base_url()}}/resources/assets/js/modernizr.custom.97074.js"></script>
+</head>
+
+<body>
+    <div id="home-page">
+        <!-- site-navigation start -->  
+        <nav id="mainNavigation" class="navbar navbar-dafault main-navigation" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <!-- navbar logo -->
+                    <div class="navbar-brand">
+                        <span class="sr-only">VBG - OUT</span>
+                        <a href="{{ path_for('acceuil') }}">
+                            <img src="{{base_url()}}/resources/assets/img/main-poing.png" class="img-responsive center-block" alt="logo">
+                        </a>
+                    </div>
+                    <!-- navbar logo -->
+
+                </div><!-- /.navbar-header -->
+
+                <!-- nav links -->
+                <div class="collapse navbar-collapse" id="main-nav-collapse">
+                    <ul class="nav navbar-nav navbar-right text-uppercase">
+                        <li>
+                            <a href="{{ path_for('acceuil') }}"><span>Acceuil</span></a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path_for('acceuil') }}"><span>Nos partenaires</span></a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path_for('acceuil') }}">Nos conseils</a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>pages</span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ path_for('acceuil') }}">Vos recours</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path_for('signin') }}">Inscrivez-vous</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path_for('contact') }}"><span>Contactez-nous</span></a>
+                                </li>
+                            </ul>  <!-- end of /.dropdown-menu -->
+                        </li> <!-- end of /.dropdown -->
+                        
+                        <li>
+                            <a href="{{ path_for('pauth.signin') }}" class="featured">Connexion</a>
+                        </li>
+
+                        {% if user_id != "" %}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Dashboard</span></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ path_for('plainte.list') }}">Liste des plaintes</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path_for('utilistateur.liste') }}">Liste des utilistateurs</a>
+                                    </li>
+                                </ul>  <!-- end of /.dropdown-menu -->
+                            </li> <!-- end of /.dropdown -->
+                        {% endif %}
+                    </ul>
+                </div><!-- nav links -->
+
+            </div><!-- /.container -->
+        </nav>
+        <!-- site-navigation end -->
+
+        {% block content %}
+
+        {% endblock %}
+
+        <footer>
+            <div class="container">
+                <div class="row">
+
+                    <!-- useful links -->
+                    <div class="col-md-3 col-sm-6 col-xs-6 footer-widget">
+                        <h4>Useful Links</h4>
+                        <ul class="row footer-links">
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <li><a href="#">Web Design</a></li>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Mobile</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Services</a></li>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                <li><a href="#">Organization</a></li>
+                                <li><a href="#">Career</a></li>
+                                <li><a href="#">Media</a></li>
+                                <li><a href="#">24/7</a></li>
+                                <li><a href="#">Right Way</a></li>
+                            </div>
+                        </ul>
+                    </div>
+
+                    <!-- about zopapa team -->
+                    <div class="col-md-3 col-sm-6 col-xs-6 footer-widget">
+                        <h4>Equipe Jaune - Java Bootcamp</h4>
+
+                        <p>
+                            HUGE Website Builder is a big library of pre-designed web elements which help you to create website in few minutes.
+                        </p>
+
+                        <div class="footer-address">
+                            <p>
+                                1-800-123-HELLO  <br>
+                                example@mail.com
+                            </p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="footer-share-button">
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                </ul> <!-- /.footer-share-button -->
+                            </div>
+                        </div>
+                    </div> <!-- /.footer-widget -->
+
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- footer-navigation start -->  
+        <nav class="hidden-xs hidden-sm navbar footer-nav" role="navigation">
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <!-- navbar logo -->
+                    <div class="navbar-brand">
+                        <span class="sr-only">&copy;THEMEWAGON</span>
+                        <a href="index.html">
+                            &copy;THEMEWAGON
+                        </a>
+                    </div>
+                    <!-- navbar logo -->
+
+                </div><!-- /.navbar-header -->
+
+                <!-- nav links -->
+                <div class="collapse navbar-collapse" id="main-nav-collapse">
+                    <ul class="nav navbar-nav navbar-right text-capitalize">
+                        <li><a href="#about">
+                            <span>home</span>
+                        </a></li>
+
+                        <li><a href="#services">
+                            <span>pages</span>
+                        </a></li>
+
+                        <li><a href="#portfolio">
+                            <span>features</span>
+                        </a></li>
+
+                        <li><a href="#team">
+                            <span>portfolio</span>
+                        </a></li>
+
+                        <li><a href="#pricing">
+                            <span>blog</span>
+                        </a></li>
+
+                        <li><a href="#blog">
+                            <span>shop</span>
+                        </a></li>
+
+                        <li><a href="#contact">
+                            <span>contact</span>
+                        </a></li>
+                    </ul>
+                </div><!-- nav links -->
+
+            </div><!-- /.container -->
+        </nav>
+        <!-- footer-navigation end -->
+
+    </div> <!-- end of /#home-page -->
+
+    <!--  Necessary scripts  -->
+
+    <script type="text/javascript" src="{{base_url()}}/resources/assets/js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="{{base_url()}}/resources/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{base_url()}}/resources/assets/js/owl.carousel.js"></script>
+    <script type="text/javascript" src="{{base_url()}}/resources/assets/js/jquery.hoverdir.js"></script>
+
+
+    <!-- script for portfolio section using hoverdirection -->
+    <script type="text/javascript">
+        $(function() {
+
+            $('.portfolio-item > .item-image').each( function() { $(this).hoverdir({
+                hoverDelay : 75
+            }); } );
+
+        });
+    </script>
+
+
+    <!-- script for twitter-feed using owl carousel-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $("#twit").owlCarousel({
+
+                    navigation : true, // Show next and prev buttons
+                    slideSpeed : 100,
+                    paginationSpeed : 400,
+                    navigationText : false,
+                    singleItem: true,
+                    autoPlay: true,
+                    pagination: false
+                });
+
+        });
+    </script>
+
+
+    <!-- script for testimonial section using owl carousel -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $("#client-speech").owlCarousel({
+
+                    autoPlay: 5000, //Set AutoPlay to 3 seconds
+                    stopOnHover: true,
+                    singleItem:true
+                });
+
+        });
+    </script>
+</body>
+</html>

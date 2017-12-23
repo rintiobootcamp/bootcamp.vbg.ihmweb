@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    function afficheCorbeille(idcorbeille) {
+        var table = $('#example-datatable').DataTable();
+
+        $.ajax({
+            url: '{{ base_url() }}/corbeille/affiche',
+            data: 'idcorbeille='+idcorbeille,
+            dataType: 'json',
+            success: function(json) 
+            {
+                var body = [];
+                for (var i in json){
+                    console.log(json[i]);
+                    var row = [];
+                    var statut = "";
+                    if (json[i].statut==0){
+                        statut = "En cours de traitement";
+                    }
+                    else if (json[i].statut==1){
+                        statut = "Traité";
+                    }
+                    else {
+                        statut = "Erreur";
+                    }
+
+                    row.push(json[i].numero);
+                    row.push(moment(json[i].datecourrier).format("DD/MM/YYYY"));
+                    row.push(json[i].reference);
+                    row.push(json[i].objet);
+                    row.push(json[i].expediteur);
+                    row.push(statut);
+                    row.push('<a href="{{ base_url() }}/resources/pieces_jointes/'+json[i].piecejointe+'" target="_blank" placeholder="Télécharger la pièce jointe"><i class="gi gi-download_alt"></i></a>');
+
+                    body.push(row);
+                }
+
+                table.clear().draw();
+                table.rows.add(body); // Add new data
+                table.columns.adjust().draw(); // Redraw the DataTabl
+
+            },
+            error: function()
+            {
+                console.log("Erreur");
+            }
+        });
+    }
+</script>

@@ -1,0 +1,15 @@
+{# empty Twig template #}
+
+<script type="text/javascript">
+   
+/*Vérifier si les mots de passe sont conformes*/
+$('#confirmation').blur(function() {
+    if( $("#motdepasse").val()!== $("#confirmation").val()){
+        Materialize.toast('<span>Les mots de passe ne sont pas conformes.</span>', 4000, 'red');
+        $("#confirmation").val('');
+    }
+});
+
+</script>
+
+

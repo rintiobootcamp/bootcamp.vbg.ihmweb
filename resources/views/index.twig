@@ -1,0 +1,196 @@
+{% extends 'base.twig' %}
+
+{% block content  %}
+<!-- header start -->
+<header id="header" class="header-wrapper home-parallax home-fade">
+    <div class="header-overlay"></div>
+    <div class="header-wrapper-inner">
+        <div class="container">
+
+            <div class="welcome-speech">
+                <h1>Les Violences Basées sur le genre nuisent au développement de notre pays.</h1>
+                <p>Aidez-nous à éradiquer ce fléau</p>
+                <a href="#" class="btn btn-white">
+                    Dénoncez un cas
+                </a>
+            </div><!-- /.intro -->
+
+        </div><!-- /.container -->
+
+    </div><!-- /.header-wrapper-inner -->
+</header>
+<!-- /#header -->
+
+<div class="main-content">
+<!--  begin intro section -->
+<section class="intro bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <img src="{{base_url()}}/resources/assets/img/femme_battue.png" class="img-responsive center-block" alt="intro">
+            </div>
+
+            <div class="col-md-7">
+                <div class="intro-description">
+                    <h2>Le fléau des VBG</h2>
+                    <p>
+                        La violence à l’égard des femmes et des filles est l’une des violations des droits fondamentaux les plus fréquentes dans le monde. Au Bénin, on estime qu’une femme sur quatre sera victime de violences physiques ou sexuelles au cours de son existence. C'est un véritable fléau qui met à mal la croissance du Bénin.
+                    </p>
+
+                    <ul class="points">
+                        <li>
+                            <span>
+                                <i class="fa fa-star"></i>
+                            </span>
+                            Nombre de plaintes sur l'ensemble du territoire nationnal : {{nombre}}
+                        </li>
+                    </ul> <!-- end of /.points -->
+                </div> <!-- end of /.intro-description -->
+            </div>
+        </div>
+    </div> <!-- end of /.container -->
+</section> 
+<!--  end of intro section -->
+
+<!--  begin feature section  -->
+<section class="bg-white feature">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="feature-content text-center">
+                    <div class="feature-icon-box">
+                        <a href="{{ path_for('plainte.form') }}" id="denoncer" title="Denoncer un cas de VBG">
+                            <div class="feature-icon center-block">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                        </a>
+                    </div> <!--  end of /.feature-icon-box  -->
+                    <div class="feature-info">
+                        <h3 class="feature-heading">Dénoncez un cas</h3>
+                        <p class="feature-description">
+                            Vous êtes témoins d'un cas de VBG ou êtes victime d'un cas de VBG ? Metez-y fin.
+                        </p>  <!--   end of /.feature-description  -->
+                    </div> <!--   end of /.feature-info  -->
+                </div> <!--  end of /.feature-content  -->
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-content text-center">
+                    <div class="feature-icon-box">
+                        <a href="#modal-suivre" id="suivre_plainte" data-toggle="modal" title="Suivre une plainte">
+                            <div class="feature-icon center-block">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                        </a>
+                    </div> <!--  end of /.feature-icon-box  -->
+                    <div class="feature-info">
+                        <h3 class="feature-heading">Suivez votre plainte</h3>
+                        <p class="feature-description">
+                            Vérifez l'état d'avancement de votre plainte et découvrez ses étapes précédentes.
+                        </p>  <!--   end of /.feature-description  -->
+                    </div> <!--   end of /.feature-info  -->
+                </div> <!--  end of /.feature-content  -->
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-content text-center">
+                    <div class="feature-icon-box">
+                        <a href="#modal-noter" id="noter" data-toggle="modal" title="Noter la plateforme">
+                            <div class="feature-icon center-block">
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </a>
+                    </div> <!--  end of /.feature-icon-box  -->
+                    <div class="feature-info">
+                        <h3 class="feature-heading">Notez-nous</h3>
+                        <p class="feature-description">
+                            Aidez-nous à améliorez notre système.
+                        </p>  <!--   end of /.feature-description  -->
+                    </div> <!--   end of /.feature-info  -->
+                </div> <!--  end of /.feature-content  -->
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-content text-center">
+                    <div class="feature-icon-box">
+                        <a href="{{ path_for('contact') }}" id="contacter" title="Contactez-nous">
+                            <div class="feature-icon center-block">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                        </a>
+                    </div> <!--  end of /.feature-icon-box  -->
+                    <div class="feature-info">
+                        <h3 class="feature-heading">Contactez-nous</h3>
+                        <p class="feature-description">
+                            Vous avez un problème particulier ? Ecrivez-nous.
+                        </p>  <!--   end of /.feature-description  -->
+                    </div> <!--   end of /.feature-info  -->
+                </div> <!--  end of /.feature-content  -->
+            </div>
+
+        </div>
+    </div> <!-- end of /.container -->
+</section>  
+<!--   end of feature section  -->
+</div> <!-- end of /.main-content -->
+
+<!-- Noter la plateforme -->
+<div id="modal-noter" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title"><strong>Noter la plateforme</strong></h3>
+            </div>
+            <div class="modal-body">
+                <form action="{{ path_for('noter') }}" method="post">
+                    <div class="form-group" id="fg_statut">
+                        <div class="col-md-8">
+                            <input type="radio" name="noteType" value="UN" id="UN"/> <label for="UN">Un    </label>
+                            <input type="radio" name="noteType" value="DEUX" id="DEUX"/> <label for="DEUX">Deux    </label>
+                            <input type="radio" name="noteType" value="TROIS" id="TROIS" /> <label for="TROIS">Trois    </label>
+                            <input type="radio" name="noteType" value="QUATRE" id="QUATRE" /> <label for="QUATRE">Quatre    </label>
+                            <input type="radio" name="noteType" value="CINQ" id="CINQ" /> <label for="CINQ">Cinq</label>
+                        </div>
+                </div>
+                    <div><br></div>
+                    <input type="submit" id="send" value="Noter" class="btn btn-effect-ripple btn-sm btn-primary">
+                    {{ csrf.field | raw }} 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Noter -->
+
+<!-- Suivre -->
+<div id="modal-suivre" class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title"><strong>Suivre une plainte</strong></h3>
+            </div>
+            <div class="modal-body">
+                <form action="{{ path_for('suivre') }}" method="post">
+                    <div class="form-group" id="fg_statut">
+                        <div class="col-md-12 text-center">
+                            <div class="form-group" id="fg_datecourrier">
+                                <label class="control-label" for="reference">Référence</label>
+                                <div class="text-center">
+                                    <input id="reference" type="text" class="form-control" name="reference" value="" required">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                    <div><br></div>
+                    <input type="submit" id="send" value="Envoyer" class="btn btn-effect-ripple btn-sm btn-primary">
+                    {{ csrf.field | raw }} 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Suivre -->
+{% endblock %}

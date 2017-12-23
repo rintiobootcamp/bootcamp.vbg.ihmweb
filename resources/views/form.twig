@@ -1,0 +1,91 @@
+{% macro checkbox(name,label,value,class_type,requis,class_div, tab_index) %}
+    <div class="form-group">
+            <div class="col-md-8">
+                <label class="control-label" for="{{ name}}">
+                    <input id="{{ name }}" type="checkbox" class="{{ class_type}}" name="{{ name}}" value="{{ value }}" {{ requis|raw }} tabindex="{{ tab_index }}">
+                    <span>{{ label }}</span>
+                </label>
+            </div>
+    </div>
+ {% endmacro %}
+
+{% macro input(type,name,label,value,class_type,requis,class_div, tab_index) %}
+    <div class="form-group" id="fg_{{name}}">
+            <label class="col-md-4 control-label" for="{{ name}}">{{ label }}</label>
+            <div class="col-md-8">
+                <input id="{{ name }}" type="{{ type }}" class="form-control {{ class_type}}" name="{{ name}}" value="{{ value }}" {{ requis|raw }} tabindex="{{ tab_index }}">
+            </div>
+    </div>
+ {% endmacro %}
+ 
+
+{% macro file(name,label,class_type,requis,class_div, tab_index) %}
+    <div class="form-group">
+            <label class="col-md-4 control-label" for="{{ name}}">{{ label }}</label>
+            <div class="col-md-8">
+                <input id="example-file-input" type="file" class="form-control {{ class_type}}" name="{{ name}}" {{ requis|raw }} tabindex="{{ tab_index }}">
+            </div>
+    </div>
+ {% endmacro %}
+
+ 
+ {% macro submit(value,class_div,class, tab_index) %}
+       <div class="form-group form-actions ">
+        <div class="{{ class_div|default('col-md-8 col-md-offset-4') }}">
+           <button type="submit" class="col-md-12 btn {{ class|default('btn-effect-ripple btn-primary')}}" tabindex="{{ tab_index }}">{{ value }}</button>
+        </div>
+       </div>
+ {% endmacro %}
+
+ 
+ {% macro cancel(value, link) %}
+       <div class="row">
+            <div class="input-field">
+              <a href="{{link}}" class="btn btn-large waves-effect waves-light red darken-4 right">{{ value }}
+                <i class="mdi-content-send right"></i>
+              </a>
+            </div>
+        </div>
+ {% endmacro %}
+ 
+ 
+{% macro textarea(name, value, rows,label,placeholder) %}
+    <div class="form-group">
+            <label class="col-md-4 control-label" for="{{name}}">{{label}}</label>
+            <div class="col-md-8">
+                <textarea maxlength="360" id="{{name}}" name="{{name}}" rows="{{rows|default(10)}}" class="form-control" placeholder="{{placeholder}}">{{ value|e }}</textarea>
+            </div>
+    </div>
+{% endmacro %}
+
+{% macro select(label,content, valIndex, lblIndex,selectedVal, class_div,selectname,selectid, vide, script, libIndex1, tab_index) %}
+            <div class="form-group" id="fg_{{selectid | default(valIndex)}}">
+                    <label class="col-md-4 control-label" for="{{selectname | default(valIndex)}}">{{ label }}</label>
+                    <div class="col-md-8">
+                        <select name="{{selectname | default(valIndex)}}" id="{{selectid | default(valIndex)}}" {{ script|raw}} class="{{class_div|default('form-control')}}" size="1" style="width: 100%;" tabindex="{{ tab_index }}">
+                           {% if vide !='' %}
+                            <option value=""  >{{ vide }}</option>
+                           {% endif %}
+                           {% for key, value in content %}   
+                              <option value="{{ value[valIndex] }}" {{ (selectedVal==value[valIndex])? 'selected': '' }}   >{{ ((libIndex1!='')? (value[libIndex1]~'::'):'') ~value[lblIndex] }}</option>
+                           {% endfor %}
+                        </select>
+                    </div>
+            </div>
+{% endmacro %}
+
+{% macro selectUser(label,content, valIndex, lblIndex,selectedVal, class_div,selectname,selectid, vide, script, libIndex1, libIndex2) %}
+            <div class="form-group" id="fg_{{selectid | default(valIndex)}}">
+                    <label class="col-md-4 control-label" for="{{selectname | default(valIndex)}}">{{ label }}</label>
+                    <div class="col-md-8">
+                        <select name="{{selectname | default(valIndex)}}" id="{{selectid | default(valIndex)}}" {{ script|raw}} class="{{class_div|default('form-control')}}" size="1" style="width: 100%;" tabindex="{{ tab_index }}">
+                           {% if vide !='' %}
+                            <option value=""  >{{ vide }}</option>
+                           {% endif %}
+                           {% for key, value in content %}   
+                              <option value="{{ value[valIndex] }}" {{ (selectedVal==value[valIndex])? 'selected': '' }}   >{{ ((libIndex1!='')? (value[libIndex1]):'') ~ ' ' ~ ((libIndex2!='')? (value[libIndex2]):'')}}</option>
+                           {% endfor %}
+                        </select>
+                    </div>
+            </div>
+{% endmacro %}

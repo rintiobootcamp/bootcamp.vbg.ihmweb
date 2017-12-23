@@ -1,0 +1,64 @@
+{% from 'form.twig' import input, textarea, submit, file, selectUser %}
+
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="block-title text-center">
+        <h2>Signaler un cas de VBG</h2>
+    </div>
+
+    <div class="row">
+        <form class="form-horizontal" enctype="multipart/form-data" method='post' action="{{path_for('plainte.create')}}"> 
+            <input type="hidden" id="longitude" value="" name="longitude"/>
+            <input type="hidden" id="latitude" value="" name="latitude"/>
+            <div class="form-group" id="fg_plaignantPhone">
+                <label class="col-md-2 control-label" for="plaignantPhone">Votre numéro</label>
+                <div class="col-md-8">
+                    <input id="plaignantPhone" type="tel" class="form-control" name="plaignantPhone">
+                </div>
+            </div>
+            <div class="form-group" id="fg_plaignantPhone">
+                <label class="col-md-2 control-label" for="plaignantEmail">Votre addresse mail</label>
+                <div class="col-md-8">
+                    <input id="plaignantEmail" type="email" class="form-control" name="plaignantEmail">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="contenu">Le contenu de votre plainte</label>
+                <div class="col-md-8">
+                    <textarea maxlength="360" id="contenu" name="contenu" rows="10" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-group" id="fg_plaignantPhone">
+                <label class="col-md-2 control-label"></label>
+                <div class="col-md-8">
+                    <button type="submit" class="col-md-12 btn btn-effect-ripple btn-primary">Enregistrer</button>
+                </div>
+            </div>
+            {{ csrf.field | raw }}
+        </form>
+    </div>
+<script>
+/*
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}*/
+
+window.onload = function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    $('#longitude').val(position.coords.longitude);
+    $('#latitude').val(position.coords.latitude);
+}
+</script>
+{% endblock %}

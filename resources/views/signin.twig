@@ -1,0 +1,57 @@
+{% extends 'base.twig' %}
+
+{% block content  %}
+
+<!-- Login Container -->
+<div id="login-container">
+    <!-- Register Header -->
+    <h1 class="h2 text-light text-center push-top-bottom animation-slideDown">
+        <strong>Inscrivez-vous</strong>
+    </h1>
+    <!-- END Register Header -->
+
+    <!-- Register Form -->
+    <div class="block animation-fadeInQuickInv">
+        <!-- Register Form -->
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 site-block">
+                <form action="{{ path_for('validate') }}" method="post" id="form-register" class="form-horizontal">
+                    <input type="hidden" id="role" name="role" class="form-control input-lg" value="Citoyen">
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="text" id="nom" name="nom" class="form-control input-lg" placeholder="Votre nom ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Addresse Mail</label>
+                        <input type="mail" id="email" name="email" class="form-control input-lg">
+                    </div>
+                    <div class="form-group">
+                        <label for="numero">Numéro</label>
+                        <input type="tel" id="numero" name="numero" class="form-control input-lg" placeholder="Votre numéro de téléphone ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="login">Pseudo</label>
+                        <input type="text" id="login" name="login" class="form-control input-lg" placeholder="Choisissez un pseudo ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" id="password" name="password" class="form-control input-lg" placeholder="Choisissez un mot de passe ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Confirmez votre mot de passe</label>
+                        <input type="password" id="password-verify" name="password-verify" class="form-control input-lg" placeholder="Répétez votre mot de passe ...">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-lg btn-primary">S'inscrire</button>
+                    </div>
+                    {{ csrf.field | raw }}
+                </form>
+            </div>
+        </div>
+        <!-- END Register Form -->
+    </div>
+    <!-- END Register Block -->
+</div>
+<!-- END Login Container -->
+
+{% endblock %}

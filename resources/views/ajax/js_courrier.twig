@@ -1,0 +1,89 @@
+<script type="text/javascript">
+    function sendCourrier() {
+        var destinataires = [];
+        var chk = false;
+        var cboxes = document.getElementsByName('courriers[]');
+        for (var i=0; i<cboxes.length; i++) {
+            if (cboxes[i].checked){
+                console.log(cboxes[i].value);
+                destinataires.push(cboxes[i].value);
+                chk = true;
+            }
+        }
+        
+        if (chk){
+            var ch = destinataires.join('$');
+            $.ajax({
+                url: '{{ base_url() }}/courrier/getcourriers',
+                data: 'courriers='+ch,
+                dataType: 'json',
+                success: function(json)
+                {
+                    console.log(json);
+                    var courriers = "";
+                    for (var i in json){
+                        console.log(json[i]);
+                        courriers = courriers+'<span class="tag"><span>Courrier N° '+json[i].numero+'</span></span>';
+                    }
+                    $('#transfert_courriers').val(ch);
+                    $('#transfert_liste_courriers').html(courriers);
+                    $('#submit_tranmission').attr("disabled", false);
+                    $('#mention').attr("disabled", false);
+                },
+                error: function()
+                {
+                    console.log("Erreur");
+                }
+            });
+        }
+        else{
+            $('#transfert_liste_courriers').html('Veuillez sélectionner des courriers à transmettre');
+            $('#submit_tranmission').attr("disabled", true);
+            $('#mention').attr("disabled", true);
+        }
+    }
+
+    function addToClasseur() {
+        var destinataires = [];
+        var chk = false;
+        var cboxes = document.getElementsByName('courriers[]');
+        for (var i=0; i<cboxes.length; i++) {
+            if (cboxes[i].checked){
+                console.log(cboxes[i].value);
+                destinataires.push(cboxes[i].value);
+                chk = true;
+            }
+        }
+        
+        if (chk){
+            var ch = destinataires.join('$');
+            $.ajax({
+                url: '{{ base_url() }}/courrier/getcourriers',
+                data: 'courriers='+ch,
+                dataType: 'json',
+                success: function(json)
+                {
+                    console.log(json);
+                    var courriers = "";
+                    for (var i in json){
+                        console.log(json[i]);
+                        courriers = courriers+'<span class="tag"><span>Courrier N° '+json[i].numero+'</span></span>';
+                    }
+                    $('#classeur_courriers').val(ch);
+                    $('#classeur_liste_courriers').html(courriers);
+                    $('#submit_classeur').attr("disabled", false);
+                },
+                error: function()
+                {
+                    console.log("Erreur");
+                }
+            });
+        }
+        else{
+            $('#classeur_liste_courriers').html('Veuillez sélectionner des courriers à transmettre');
+            $('#submit_classeur').attr("disabled", true);
+        }
+    }
+</script>
+
+
